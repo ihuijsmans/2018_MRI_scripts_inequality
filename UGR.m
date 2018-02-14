@@ -171,14 +171,14 @@ function escape = UGR(window, ppnr, c, trial, initials, SCANNER, practice)
                         onset_dummy_pulses = GetSecs;
                         onset_first_pulse = GetSecs;
                     else % some kind of scanner -- wait for it
-                        onset_dummy_pulses = wait_for_scanner_test(30,bitsiboxScanner,scannertrigger,fid_timing2, mainstart, c.trials(trial+1,4), true);% this might be change to 31
-                        onset_first_pulse =  wait_for_scanner_test(1 ,bitsiboxScanner,scannertrigger,fid_timing2, mainstart, c.trials(trial+1,4), false);
+                        onset_dummy_pulses = wait_for_scanner(30,bitsiboxScanner,scannertrigger,fid_timing2, mainstart, c.trials(trial+1,4), true);% this might be change to 31
+                        onset_first_pulse =  wait_for_scanner(1 ,bitsiboxScanner,scannertrigger,fid_timing2, mainstart, c.trials(trial+1,4), false);
                     end
                     
                     %Save timings
                     fprintf(fid_timing, '%s\t%s\t%s\t%i\n', mainstart,onset_dummy_pulses, onset_first_pulse, c.trials(trial+1,4));
         
-                    presenttime = 0.5;
+                    presenttime = 0;
                     
                     if trial < 10
                         screen = 'FT';
